@@ -8,6 +8,10 @@ class ArrayLinkedList{
 
   public:
     void push(int val){
+      if((end + 1) >= ARR_SIZE){
+        std::cout<<"Array is out of memory storage"<<std::endl;
+        return;
+      }
       //Adiciona um valor no fim da lista
       end += 1;
       LL_ARRAY[end] = val;
@@ -22,30 +26,43 @@ class ArrayLinkedList{
 
     int pop(){
       //Devolve e remove o ultimo elemento da lista
+      if(end == -1){
+        std::cout<<"No elements to pop"<<std::endl;
+        return -1;
+      }
       int returnValue = LL_ARRAY[end];
       LL_ARRAY[end] = 0;
       end -= 1;
       return returnValue;
     }
 
-    void insertAt(int val, int idx){
-
-    }
-
-    void removeAt(int val, int idx){
-
-    }
-
-    void updateAt(int val, int idx){
-
+    void updateAt(int idx, int val){
+      if((idx + 1) >= ARR_SIZE){
+        std::cout<<"Pointer out of list range"<<std::endl;
+        return;
+      }
+      LL_ARRAY[idx] = val;
     }
     
     void peek(){
-
+      if(end == -1){
+        std::cout<<"No elements in list"<<std::endl;
+        return;
+      }
+      std::cout<<LL_ARRAY[0]<<std::endl;
     }
 
     void peekAt(int idx){
+      if(end == -1){
+        std::cout<<"No elements in list"<<std::endl;
+        return;
+      }
 
+      if((idx + 1) >= ARR_SIZE){
+        std::cout<<"Pointer out of list range"<<std::endl;
+        return;
+      }
+      std::cout<<LL_ARRAY[0]<<std::endl;
     }
 };
 
@@ -60,10 +77,9 @@ int main(){
    */
 
   ArrayLinkedList* arr = new ArrayLinkedList();
+  arr->peek();
   arr->push(10);
-  arr->push(30);
-  int lastVal = arr->pop();
-  arr->showAll();
-  std::cout << "Last Val = " << lastVal << std::endl;
+  arr->peek();
+  arr->peekAt(30);
   return 1;
 }
