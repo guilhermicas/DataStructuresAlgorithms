@@ -7,8 +7,10 @@ int arrLen = sizeof(array) / sizeof(array[0]);
 // Outputs array
 void printArray(int arr[]){
   for(int i = 0; i < arrLen; i++){
-    printf("nr%d: %d\n", i, arr[i]);
+    //printf("nr%d: %d\n", i, arr[i]);
+    printf("%d ", arr[i]);
   }
+  printf("\n");
 }
 
 void arrayInit(int arr[]){
@@ -71,8 +73,16 @@ int main(int argc, char **argv[]){
 
   printArray(array);
   
-  //Objective find 13 which its index is 3
-  printf("The function returns:\n%d\n", binarySearch(array, 99));
+  //Search interaction
+  printf("Value to search = ");
+
+  int n;
+  scanf("%d", &n);
+
+  int res = binarySearch(array, n);
+
+  //Objective find index of n
+  printf("The function returns:\n%d\n", res);
 
   return 1;
 }
